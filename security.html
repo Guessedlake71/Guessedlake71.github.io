@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InvManager Security</title>
+<style>
+  body { font: 16px/1.6 system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #222; background: #fff; }
+  a { color: #0b57d0; }
+</style>
+</head>
+<body>
+<h1>InvManager information security policy</h1>
+<p>Last updated: 13 October 2026</p>
+
+<p>This policy covers InvManager (TikTok Shop app name: warehouseShop), a private tool used only by one small UK
+shop, and every system that stores or handles its data. The business owner owns this policy and reviews it at
+least once a year and after any incident or major change. Everyone given access must read and follow it.</p>
+
+<h2>Network protection</h2>
+<ul>
+  <li>The server is reachable only through Cloudflare Tunnel, which connects outbound. No web ports are open on it.</li>
+  <li>Cloudflare Access sits in front of the web app: people sign in with an approved email and a one-time code;
+    machines use a named Cloudflare service token.</li>
+  <li>The server firewall allows only SSH, and root login is disabled.</li>
+  <li>The app checks the signed Cloudflare Access token on every request and records who made each change.</li>
+  <li>TikTok Shop webhook and authorisation addresses reject any request whose TikTok signature does not verify.</li>
+  <li>Cloudflare's DDoS and threat filtering apply to all traffic to the server.</li>
+</ul>
+
+<h2>Endpoint protection</h2>
+<ul>
+  <li>Company PCs run Microsoft Defender Antivirus with real-time protection and automatic updates.</li>
+  <li>Windows Firewall stays on, and PCs that hold order data use BitLocker disk encryption.</li>
+</ul>
+
+<h2>Daily security baseline</h2>
+<ul>
+  <li>Multi-factor authentication on TikTok Shop, Cloudflare, DigitalOcean, Google and GitHub accounts.</li>
+  <li>Passwords of at least 12 characters, unique per service, kept in a password manager.</li>
+  <li>Screens lock after 5 minutes idle. Clear desk: no passwords, order printouts or customer details left out.</li>
+  <li>Company devices are not shared with people outside the business.</li>
+</ul>
+
+<h2>Access control</h2>
+<ul>
+  <li>Least privilege: only the owner has admin access to the server and app credentials. Staff get the inventory app only.</li>
+  <li>No shared accounts. Access is reviewed every 3 months and removed the day it is no longer needed.</li>
+  <li>App secrets and tokens are kept only in owner-only files on the server, never in code, chat or spreadsheets,
+    and are rotated at once if they may have been exposed.</li>
+</ul>
+
+<h2>Data classification and encryption</h2>
+<ul>
+  <li><strong>Confidential</strong>: buyer names, addresses, phone numbers, order details, credentials.
+    <strong>Internal</strong>: stock, auction logs. <strong>Public</strong>: product listings.</li>
+  <li>All data is encrypted in transit (TLS/HTTPS). Confidential data is kept only on the UK server and
+    encrypted company PCs, and only the order fields needed for fulfilment are fetched.</li>
+</ul>
+
+<h2>Vulnerability management</h2>
+<ul>
+  <li>Server security updates install automatically; all packages are updated at least monthly.</li>
+  <li>Windows Update is on for all PCs; the app's dependencies are reviewed monthly.</li>
+  <li>Security notices from Cloudflare, DigitalOcean, TikTok Shop and GitHub are monitored.</li>
+  <li>Critical issues are fixed within 7 days, others within 30 days.</li>
+</ul>
+
+<h2>Incident response</h2>
+<p>The business owner is the incident lead. Anyone who notices a lost device, a strange login or a data leak tells
+the owner at once. We then contain it (revoke credentials and access), assess what was affected, notify, recover from
+a clean backup, and write up what changes.</p>
+<ul>
+  <li>TikTok Shop: notified within 24 hours of confirming an incident affecting TikTok Shop data.</li>
+  <li>The UK ICO: within 72 hours when the law requires it.</li>
+  <li>Affected people: without undue delay when they are at high risk.</li>
+</ul>
+
+<h2>Contact</h2>
+<p>tangjasoncd@gmail.com</p>
+<p><a href="index.html">Home</a> · <a href="privacy.html">Privacy policy</a></p>
+</body>
+</html>
